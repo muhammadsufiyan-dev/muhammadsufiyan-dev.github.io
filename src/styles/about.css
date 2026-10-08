@@ -126,14 +126,17 @@
   .about-grid {
     grid-template-columns: 1fr;
   }
-  .about-visual {
-    max-width: 380px;
-    margin: 0 auto;
-    text-align: center;
-  }
+  /* only the photo itself centers — the pill, facts list, and body text
+     stay full-width so the section doesn't feel squeezed into a column */
   .about-photo {
     max-width: 260px;
     margin: 0 auto;
+  }
+  .status-pill {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
