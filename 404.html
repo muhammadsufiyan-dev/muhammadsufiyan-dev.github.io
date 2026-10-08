@@ -10,7 +10,7 @@
       // refresh on a route like /project/cityguide returns a real 404.
       // This script catches that 404 and redirects back to index.html
       // while preserving the intended path, which index.html then restores.
-      var pathSegmentsToKeep = 1; // keep the repo name segment, e.g. /muhammadsufiyan-dev/
+      var pathSegmentsToKeep = 0; // site is served from the root domain now — no repo-name segment to keep
 
       var l = window.location;
       l.replace(
