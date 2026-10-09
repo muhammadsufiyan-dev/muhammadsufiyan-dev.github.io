@@ -74,29 +74,6 @@ const cartivaGallery = cartivaPageUrls.map((src, i) => ({
 
 export const projects = [
   {
-    id: 'ecommerce',
-    category: 'Web',
-    label: 'Web development · Freelance',
-    title: 'E-commerce Website Development',
-    tagline:
-      'A fully functional e-commerce site with product listings, shopping cart functionality, and a responsive, mobile-first layout for smooth navigation.',
-    description:
-      "Built as a freelance client project, this store covers the essentials a small business needs to sell online: browsable product listings, a shopping cart that actually works, and an interface that stays usable from a phone in one hand. The focus throughout was smooth navigation and a modern, uncluttered interface.",
-    role: 'End-to-end freelance development — from front-end layout and styling to the PHP/MySQL back-end powering products and cart logic, plus ongoing UI/UX refinement based on client feedback.',
-    features: [
-      'Full product listing and browsing experience',
-      'Working shopping cart with quantity and item management',
-      'Responsive, mobile-first layout',
-      'Clean, modern storefront interface',
-      'PHP & MySQL back-end for product and order data',
-    ],
-    tags: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL'],
-    thumbType: 'icon',
-    gallery: [],
-    demoUrl: null,
-    githubUrl: null,
-  },
-  {
     id: 'cityguide',
     category: 'Mobile',
     label: 'Flutter · Firebase · Full-stack',
@@ -165,8 +142,8 @@ export const projects = [
     ],
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Firebase Authentication', 'Cloud Firestore', 'GitHub Pages'],
     thumbType: 'image',
-    thumbImage: cartivaPdfCover,
-    heroImage: cartivaPdfCover,
+    thumbImage: cartivaPageUrls[3],
+    heroImage: cartivaPageUrls[3],
     gallery: cartivaGallery,
     demoUrl: 'https://muhammadsufiyan-dev.github.io/cartiva',
     githubUrl: 'https://github.com/muhammadsufiyan-dev/cartiva',
