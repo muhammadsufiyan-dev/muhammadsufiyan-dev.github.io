@@ -1,12 +1,19 @@
 import cityGuidePhones from '../assets/cityguide-phones.jpg'
 import cityGuidePdfCover from '../assets/cityguide-pdf-cover.jpg'
 import cityGuidePdfAbout from '../assets/cityguide-pdf-about.jpg'
+import cartivaPdfCover from '../assets/cartiva-pdf-cover.jpg'
 
 // All 24 pages of the City Guide case study PDF, auto-imported and sorted by filename
 const pdfPageModules = import.meta.glob('../assets/pdf-pages/*.jpg', { eager: true, import: 'default' })
 const pdfPageUrls = Object.keys(pdfPageModules)
   .sort()
   .map((key) => pdfPageModules[key])
+
+// All 15 pages of the Cartiva case study PDF
+const cartivaPageModules = import.meta.glob('../assets/pdf-pages-cartiva/*.jpg', { eager: true, import: 'default' })
+const cartivaPageUrls = Object.keys(cartivaPageModules)
+  .sort()
+  .map((key) => cartivaPageModules[key])
 
 const pdfPageTitles = [
   'Cover — Introducing The City Guide',
@@ -39,6 +46,30 @@ const cityGuideGallery = pdfPageUrls.map((src, i) => ({
   src,
   alt: `City Guide case study — page ${i + 1}: ${pdfPageTitles[i] || ''}`,
   caption: pdfPageTitles[i] || `Page ${i + 1}`,
+}))
+
+const cartivaPageTitles = [
+  'Cover — Introducing Cartiva',
+  'What is Cartiva?',
+  'Key Features',
+  'Home Page — Hero & Popular Right Now',
+  'Home Page — Categories & Footer',
+  'Shop — Browse Everything',
+  'Smart Category Filters',
+  'Product Details',
+  'Shopping Cart',
+  'Secure Checkout',
+  'Order Confirmed',
+  'Order History',
+  'My Account',
+  'Your Wishlist',
+  "Let's Connect",
+]
+
+const cartivaGallery = cartivaPageUrls.map((src, i) => ({
+  src,
+  alt: `Cartiva case study — page ${i + 1}: ${cartivaPageTitles[i] || ''}`,
+  caption: cartivaPageTitles[i] || `Page ${i + 1}`,
 }))
 
 export const projects = [
@@ -104,6 +135,47 @@ export const projects = [
     pdfPages: 24,
     pdfBlurb:
       "A complete 24-page walkthrough — every screen from splash to settings, the full admin panel, and the thinking behind each decision.",
+  },
+  {
+    id: 'cartiva',
+    category: 'Web',
+    label: 'Web development · E-commerce',
+    title: 'Cartiva — E-commerce Website',
+    tagline:
+      'A modern, fully responsive online store — products, cart, wishlist, accounts and checkout, powered by Firebase.',
+    description:
+      'Cartiva is a modern, fully responsive e-commerce website that delivers a smooth shopping experience across desktop, tablet and mobile. Shoppers can browse products, search and filter by category or brand, manage their cart and wishlist, create an account, place orders and review their order history. Firebase Authentication and Cloud Firestore power accounts and data, while the interface — built with HTML, CSS, JavaScript and Bootstrap — focuses on clean navigation, fast product browsing and a polished shopping experience.',
+    role: 'Designed and built the entire store solo — the responsive front-end with Bootstrap, the product catalog with search/category/brand filtering, the cart, wishlist and checkout flow, and the Firebase Authentication + Cloud Firestore back-end behind accounts, orders and order history.',
+    stats: [
+      { value: '15', label: 'Products' },
+      { value: '3', label: 'Categories' },
+      { value: 'Live', label: 'On GitHub Pages' },
+    ],
+    features: [
+      'Product browsing — listings and detailed product pages',
+      'Search & filters — search, category, brand and sorting',
+      'Wishlist — user-specific saved products',
+      'Shopping cart — account-based cart with live order summary',
+      'Authentication — secure sign in with Firebase',
+      'Checkout — delivery details form and order placement',
+      'Order history — every past order in one place with status badges',
+      'Responsive design — desktop, tablet and mobile',
+      'Cloud database — Firebase Firestore for products, orders and users',
+      'Contact form and a custom 404 page',
+    ],
+    tags: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Firebase Authentication', 'Cloud Firestore', 'GitHub Pages'],
+    thumbType: 'image',
+    thumbImage: cartivaPdfCover,
+    heroImage: cartivaPdfCover,
+    gallery: cartivaGallery,
+    demoUrl: 'https://muhammadsufiyan-dev.github.io/cartiva',
+    githubUrl: 'https://github.com/muhammadsufiyan-dev/cartiva',
+    pdfUrl: `${import.meta.env.BASE_URL}cartiva-case-study.pdf`,
+    pdfLabel: 'View full case study (PDF)',
+    pdfCover: cartivaPdfCover,
+    pdfPages: 15,
+    pdfBlurb:
+      'A complete 15-page walkthrough — the home page, shop and filters, product and cart flow, checkout, account and wishlist, plus the thinking behind each screen.',
   },
 ]
 
