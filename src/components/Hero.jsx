@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import headshotCutout from '../assets/headshot-cutout.png'
+import { projects } from '../data/projects'
 import '../styles/hero.css'
 
 const PHRASES = [
@@ -182,8 +183,8 @@ export default function Hero() {
         </div>
         <div className="hero-stats" ref={statsRef}>
           <div>
-            <strong>2+</strong>
-            <span>Projects delivered</span>
+            <strong>{projects.length}+</strong>
+            <span>Projects created</span>
           </div>
           <div>
             <strong>9+</strong>

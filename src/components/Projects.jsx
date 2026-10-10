@@ -40,8 +40,9 @@ export default function Projects() {
           <div className="section-label">Work</div>
           <h2>Selected projects</h2>
           <p>
-            A couple of projects that show the range — a client-facing e-commerce site and a
-            full-stack travel app with its own admin panel.
+            A few projects that show the range — a full-stack travel app with its own admin panel,
+            an e-commerce store with accounts and checkout, an AI-powered study assistant, and a
+            travel discovery site built with Firebase.
           </p>
         </div>
 

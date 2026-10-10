@@ -2,6 +2,8 @@ import cityGuidePhones from '../assets/cityguide-phones.jpg'
 import cityGuidePdfCover from '../assets/cityguide-pdf-cover.jpg'
 import cityGuidePdfAbout from '../assets/cityguide-pdf-about.jpg'
 import cartivaPdfCover from '../assets/cartiva-pdf-cover.jpg'
+import mindoraPdfCover from '../assets/mindora-pdf-cover.jpg'
+import roamoraPdfCover from '../assets/roamora-pdf-cover.jpg'
 
 // All 24 pages of the City Guide case study PDF, auto-imported and sorted by filename
 const pdfPageModules = import.meta.glob('../assets/pdf-pages/*.jpg', { eager: true, import: 'default' })
@@ -14,6 +16,18 @@ const cartivaPageModules = import.meta.glob('../assets/pdf-pages-cartiva/*.jpg',
 const cartivaPageUrls = Object.keys(cartivaPageModules)
   .sort()
   .map((key) => cartivaPageModules[key])
+
+// All 11 pages of the Mindora case study PDF
+const mindoraPageModules = import.meta.glob('../assets/pdf-pages-mindora/*.jpg', { eager: true, import: 'default' })
+const mindoraPageUrls = Object.keys(mindoraPageModules)
+  .sort()
+  .map((key) => mindoraPageModules[key])
+
+// All 16 pages of the Roamora case study PDF
+const roamoraPageModules = import.meta.glob('../assets/pdf-pages-roamora/*.jpg', { eager: true, import: 'default' })
+const roamoraPageUrls = Object.keys(roamoraPageModules)
+  .sort()
+  .map((key) => roamoraPageModules[key])
 
 const pdfPageTitles = [
   'Cover — Introducing The City Guide',
@@ -70,6 +84,51 @@ const cartivaGallery = cartivaPageUrls.map((src, i) => ({
   src,
   alt: `Cartiva case study — page ${i + 1}: ${cartivaPageTitles[i] || ''}`,
   caption: cartivaPageTitles[i] || `Page ${i + 1}`,
+}))
+
+const mindoraPageTitles = [
+  'Cover — Introducing Mindora',
+  'What is Mindora?',
+  'Key Features',
+  'Overview — Your study overview',
+  'My Notes',
+  'Capture an idea',
+  'Flashcards',
+  'Quick quiz',
+  'Focus room',
+  'Study helper',
+  "Let's Connect",
+]
+
+const mindoraGallery = mindoraPageUrls.map((src, i) => ({
+  src,
+  alt: `Mindora case study — page ${i + 1}: ${mindoraPageTitles[i] || ''}`,
+  caption: mindoraPageTitles[i] || `Page ${i + 1}`,
+}))
+
+const roamoraPageTitles = [
+  'Cover — Introducing Roamora',
+  'What is Roamora?',
+  'Key Features',
+  'The Home Page',
+  'Plan, Guides & Inbox',
+  'Explore — Find your somewhere',
+  'Destination Details',
+  'Itinerary & Notes',
+  'Trip Planner',
+  'My Trips',
+  'Saved Destinations',
+  'Your Profile',
+  'Contact — Say Hello',
+  'FAQ — Quick Answers',
+  'Info Pages — About, Terms & Privacy',
+  "Let's Connect",
+]
+
+const roamoraGallery = roamoraPageUrls.map((src, i) => ({
+  src,
+  alt: `Roamora case study — page ${i + 1}: ${roamoraPageTitles[i] || ''}`,
+  caption: roamoraPageTitles[i] || `Page ${i + 1}`,
 }))
 
 export const projects = [
@@ -153,6 +212,86 @@ export const projects = [
     pdfPages: 15,
     pdfBlurb:
       'A complete 15-page walkthrough — the home page, shop and filters, product and cart flow, checkout, account and wishlist, plus the thinking behind each screen.',
+  },
+  {
+    id: 'mindora',
+    category: 'Web',
+    label: 'React · Vite · AI Study Assistant',
+    title: 'Mindora — AI Study Assistant',
+    tagline:
+      'A calm, modern study workspace — notes, flashcards, quizzes, a focus timer and a study helper, all in one place.',
+    description:
+      'Mindora is an AI-powered study assistant built to help students learn smarter and stay organized. An overview dashboard surfaces focus time, notes, flashcards and a daily streak at a glance, while dedicated tools cover note-taking by subject, flip-card flashcards for active recall, multiple-choice quizzes with a progress bar, a distraction-free focus room with 15/25/50-minute sessions, and a study helper that turns a topic or pasted notes into a clear study guide.',
+    role: 'Designed and built the entire app solo with React and Vite — the dashboard, notes library, flashcard deck, quiz engine, focus timer and study helper — focused on a calm, responsive interface that keeps studying simple.',
+    stats: [
+      { value: '6', label: 'Study tools' },
+      { value: '3', label: 'Session lengths' },
+      { value: 'Live', label: 'On GitHub Pages' },
+    ],
+    features: [
+      'Overview dashboard — focus time, notes, flashcards and streak at a glance',
+      'Study notes — create and organize notes by subject',
+      'Flashcards — flip-card active recall with a deck counter',
+      'Quick quiz — multiple-choice questions with a progress bar',
+      'Focus room — 15, 25 and 50 minute distraction-free sessions',
+      "Study helper — turn a topic or pasted notes into a study guide",
+      "Today's plan — a simple daily checklist",
+      'Responsive design — a modern interface across devices',
+    ],
+    tags: ['React', 'Vite', 'JavaScript', 'HTML5', 'CSS3', 'Git', 'GitHub Pages'],
+    thumbType: 'image',
+    thumbImage: mindoraPageUrls[3],
+    heroImage: mindoraPageUrls[3],
+    gallery: mindoraGallery,
+    demoUrl: 'https://muhammadsufiyan-dev.github.io/ai-study-assistant',
+    githubUrl: 'https://github.com/muhammadsufiyan-dev/ai-study-assistant',
+    pdfUrl: `${import.meta.env.BASE_URL}mindora-case-study.pdf`,
+    pdfLabel: 'View full case study (PDF)',
+    pdfCover: mindoraPdfCover,
+    pdfPages: 11,
+    pdfBlurb:
+      'An 11-page walkthrough — the overview dashboard, notes, flashcards, quiz, focus room and study helper, plus the thinking behind each screen.',
+  },
+  {
+    id: 'roamora',
+    category: 'Web',
+    label: 'Web development · Travel · Firebase',
+    title: 'Roamora — Travel Discovery & Trip Planning',
+    tagline:
+      'Discover destinations, save favorites and plan your next trip — a modern travel website built with Firebase.',
+    description:
+      'Roamora is a modern travel discovery and trip-planning website that helps travelers explore destinations around the world, save favourite places and organize future adventures. Destination cards carry ratings, estimated prices and photo galleries, each place has its own detail page with a story, a suggested itinerary and traveler notes, and a trip planner lets users build a simple plan with a destination, dates and travelers. Firebase powers accounts, favourites and cloud data behind the scenes.',
+    role: 'Designed and built the entire site solo — the destination explorer with search and filters, destination detail pages, favourites, the trip planner and "My trips" journal, the profile page, and the Firebase Authentication + Firestore back end behind accounts and saved data.',
+    stats: [
+      { value: '8', label: 'Destinations' },
+      { value: '5', label: 'Travel styles' },
+      { value: 'Live', label: 'On GitHub Pages' },
+    ],
+    features: [
+      'Explore destinations — images, descriptions, ratings and prices',
+      'Search & filters — travel style, region and sorting',
+      'Destination details — stories, itineraries and photo galleries',
+      'Favorites — save and manage places you love',
+      'Trip planner — create, organize and manage plans',
+      'Accounts & profile — registration, login and profile',
+      'Traveler notes — ratings and reviews on every place',
+      'Firebase integration — authentication and cloud data',
+      'Helpful pages — Contact, FAQ, About, Terms, Privacy',
+      'Responsive design — desktop, tablet and mobile',
+    ],
+    tags: ['HTML5', 'CSS3', 'JavaScript', 'Firebase', 'Git', 'GitHub Pages'],
+    thumbType: 'image',
+    thumbImage: roamoraPageUrls[3],
+    heroImage: roamoraPageUrls[3],
+    gallery: roamoraGallery,
+    demoUrl: 'https://muhammadsufiyan-dev.github.io/roamora',
+    githubUrl: 'https://github.com/muhammadsufiyan-dev/roamora',
+    pdfUrl: `${import.meta.env.BASE_URL}roamora-case-study.pdf`,
+    pdfLabel: 'View full case study (PDF)',
+    pdfCover: roamoraPdfCover,
+    pdfPages: 16,
+    pdfBlurb:
+      'A complete 16-page walkthrough — home, explore, destination details, itinerary, trip planner, saved places, profile and contact, plus the thinking behind each screen.',
   },
 ]
 

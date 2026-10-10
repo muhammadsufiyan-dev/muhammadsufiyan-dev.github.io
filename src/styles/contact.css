@@ -4,9 +4,9 @@
   border-radius: var(--radius-lg);
   padding: 58px;
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 40px;
-  align-items: center;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: start;
 }
 .contact-card h2 {
   font-size: clamp(1.5rem, 3vw, 2.1rem);
@@ -16,6 +16,80 @@
   color: var(--ink-dim);
   margin-top: 14px;
   font-size: 0.95rem;
+}
+.contact-main {
+  display: flex;
+  flex-direction: column;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 28px;
+}
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-dim);
+}
+.contact-form input,
+.contact-form textarea {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: rgba(10, 9, 6, 0.45);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+.contact-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #181410;
+  background: var(--amber);
+  border: none;
+  padding: 13px 24px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.contact-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+.contact-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.contact-status {
+  font-size: 0.85rem;
+  margin-top: -4px;
+}
+.contact-status.success {
+  color: #8ad08a;
+}
+.contact-status.error {
+  color: #e2857a;
 }
 .contact-links {
   display: flex;
@@ -57,6 +131,12 @@
   }
 }
 
+@media (max-width: 600px) {
+  .contact-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 480px) {
   .contact-card {
     padding: 26px 20px;
@@ -64,5 +144,9 @@
   .contact-link {
     padding: 12px 14px;
     font-size: 0.82rem;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.85rem;
   }
 }

@@ -1,5 +1,11 @@
+import { useState } from 'react'
 import { useReveal } from '../hooks/useReveal'
 import '../styles/contact.css'
+
+// Formspree endpoint — sign up free at formspree.io, create a form, and
+// replace YOUR_FORM_ID below with the ID it gives you (looks like a
+// short code, e.g. "mzznwkpa"). Submissions land straight in your inbox.
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/meaekaoa'
 
 const links = [
   {
@@ -53,19 +59,105 @@ const links = [
 
 export default function Contact() {
   const cardRef = useReveal()
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [status, setStatus] = useState('idle') // idle | submitting | success | error
+
+  function handleChange(e) {
+    const { name, value } = e.target
+    setForm((f) => ({ ...f, [name]: value }))
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setStatus('submitting')
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(e.target),
+      })
+      if (res.ok) {
+        setStatus('success')
+        setForm({ name: '', email: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
+  }
 
   return (
     <section className="page-section" id="contact">
       <div className="wrap">
         <div className="contact-card reveal-init" ref={cardRef}>
-          <div>
+          <div className="contact-main">
             <div className="section-label">Contact</div>
             <h2>Let's build something.</h2>
             <p>
               Have a project in mind — a website, an app, or both? I'm open to freelance work and
               always happy to talk through an idea, even an early one.
             </p>
+
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="contact-form-row">
+                <label>
+                  <span>Name</span>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Your name"
+                    value={form.name}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="you@email.com"
+                    value={form.email}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+              <label>
+                <span>Message</span>
+                <textarea
+                  name="message"
+                  required
+                  rows={5}
+                  placeholder="Tell me a bit about your project..."
+                  value={form.message}
+                  onChange={handleChange}
+                />
+              </label>
+
+              <button className="contact-submit" type="submit" disabled={status === 'submitting'}>
+                {status === 'submitting' ? 'Sending...' : 'Send message'}
+                {status !== 'submitting' && (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                )}
+              </button>
+
+              {status === 'success' && (
+                <p className="contact-status success">
+                  Thanks — your message is on its way. I'll get back to you soon.
+                </p>
+              )}
+              {status === 'error' && (
+                <p className="contact-status error">
+                  Something went wrong sending that. Try again, or email me directly below.
+                </p>
+              )}
+            </form>
           </div>
+
           <div className="contact-links">
             {links.map((l) => (
               <a
